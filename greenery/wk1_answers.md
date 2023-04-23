@@ -96,22 +96,23 @@ ORDER BY uoc.order_count ASC
 
 5. On average, how many unique sessions do we have per hour?
 
-On average, we have 16.32 unique sessions per hour.
+On average, we have 12 unique sessions per hour. (Fixed, accidentally found some duplication in my query!)
 
 ```
 WITH session_truncate AS
 (
     SELECT
-        DATE_TRUNC('HOUR',created_at) as created_at_hour
-        , COUNT(DISTINCT session_id) as distinct_session_id_count
+    session_id
+    , DATE_TRUNC('HOUR',MIN(created_at)) as created_at_hour -- automatically deduped, but noting
     FROM
         dev_db.dbt_victoriaplum13gmailcom.stg_postgres_events
-    GROUP BY created_at_hour
-    ORDER BY created_at_hour
+    GROUP BY session_id
+    ORDER BY session_id
 )
 
+
 SELECT
-    SUM(st.distinct_session_id_count)/COUNT(st.created_at_hour)::FLOAT
+    COUNT(distinct st.session_id)/(DATEDIFF(HOUR,MIN(created_at_hour),MAX(created_at_hour)))::FLOAT
 FROM
     session_truncate st
 ```
