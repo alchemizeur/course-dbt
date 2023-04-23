@@ -92,7 +92,7 @@ SELECT
 FROM user_order_counts uoc
 GROUP BY uoc.order_count
 ORDER BY uoc.order_count ASC
-
+```
 
 5. On average, how many unique sessions do we have per hour?
 
