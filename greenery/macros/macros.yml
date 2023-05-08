@@ -1,0 +1,13 @@
+version: 2
+
+macros:
+  - name: product_view_filter
+    description: >
+      A macro to filter product view events based on the event_type and page_url_type columns.
+  - name: grantr
+    description: >
+      A macro to apply SELECT, USAGE, and REFERENCE grants on all tables, views, and sequences in the target schema to the specified role.
+    arguments:
+      - name: role
+        type: string
+        description: The role to which the grants will be applied.
