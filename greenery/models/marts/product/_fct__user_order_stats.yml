@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: fct__user_order_stats
-    description: Contains user order stats, including the number of orders, repeat user status, delivery status nd delivery time.
+    description: Contains user order stats, including the number of orders, repeat user status, delivery status, average order value, and total revenue.
     columns:
       - name: user_id
         description: Unique identifier for the user
@@ -21,4 +21,11 @@ models:
         description: Boolean flag indicating if the order has been delivered (true)
         tests:
           - not_null
-
+      - name: average_order_value
+        description: Average order value for the user's orders
+        tests:
+          - not_null
+      - name: total_rev
+        description: Total revenue generated from the user's orders
+        tests:
+          - not_null

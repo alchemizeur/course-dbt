@@ -1,4 +1,4 @@
- {{
+{{
   config(
     materialized='table'
   )
@@ -9,6 +9,7 @@ WITH events_extended AS (
           stge.event_id
         , stge.session_id
         , stge.user_id
+        , stge.product_id
         , stge.page_url_type
         , stge.created_at AS event_timestamp
         , stge.event_type

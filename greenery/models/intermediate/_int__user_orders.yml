@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int__user_orders
-    description: This table contains user orders info-- number of orders, aov and total revenue.
+    description: This table contains the number of orders placed by each user.
     columns:
       - name: user_id
         description: Unique identifier for user
@@ -11,13 +11,5 @@ models:
           - unique
       - name: number_of_orders
         description: Total number of orders placed by the user
-        tests:
-          - not_null
-      - name: average_order_value
-        description: Average order value for the user's orders
-        tests:
-          - not_null
-      - name: total_rev
-        description: Total revenue generated from the user's orders
         tests:
           - not_null

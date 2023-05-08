@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct__product_conversion_rate
+    description: This table contains conversion rate information by product.
+    columns:
+      - name: product_id
+        description: Unique identifier for the product
+        tests:
+          - not_null
+          - unique
+
+      - name: session_views
+        description: Number of sessions where the product was viewed
+        tests:
+          - not_null
+
+      - name: number_of_orders
+        description: Total number of orders containing the product
+        tests:
+          - not_null
+
+      - name: conversion_rate
+        description: Conversion rate for each product calculated as (number_of_orders / session_views) * 100
+        tests:
+          - not_null
